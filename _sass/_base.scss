@@ -8,22 +8,68 @@ dl, dd, ol, ul, figure {
     padding: 0;
 }
 
-
-
 /**
  * Basic styling
  */
 body {
-    font-family: $base-font-family;
-    font-size: $base-font-size;
-    line-height: $base-line-height;
-    font-weight: 300;
-    color: $text-color;
-    background-color: $background-color;
-    -webkit-text-size-adjust: 100%;
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  line-height:1.5em;
+  text-align: justify;
+  margin: 10px auto;
+  padding: 1em;
+  color: $text-color;
+  background-image: url("/images/bright_squares.png");
+  background-attachment: fixed;
+  -webkit-text-size-adjust: 100%;
 }
 
+h1,h2,h3,h4,h5,h6 {
+  font-weight: bold;
+  color: #111;
+  font-family: "Dosis-Medium", serif;
+  line-height: 1em;
+}
+h4,h5,h6{ font-weight: bold; }
+h1{ font-size: 2.5em; }
+h2{ font-size: 2em; }
+h3{ font-size: 1.5em; }
+h4{ font-size: 1.2em; }
+h5{ font-size: 1em; }
+h6{ font-size: 0.9em; }
 
+b, strong { font-weight: bold; }
+dfn { font-style: italic; }
+
+ins { background: #ff9; color: #000; text-decoration: none; }
+
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+ul, ol { margin: 1em 0; padding: 0 0 0 2em; }
+li p:last-child { margin:0 }
+dd { margin: 0 0 0 2em; }
+
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+
+@media only screen and (min-width: 480px) {
+  body{font-size:14px;}
+}
+
+@media only screen and (min-width: 768px) {
+  body{font-size:16px;}
+}
+
+@media only screen and (min-width: -px) {
+  body{font-size:25px;}
+}
 
 /**
  * Set `margin-bottom` to maintain vertical rhythm
@@ -35,8 +81,6 @@ ul, ol, dl, figure,
     margin-bottom: $spacing-unit / 2;
 }
 
-
-
 /**
  * Images
  */
@@ -44,8 +88,6 @@ img {
     max-width: 100%;
     vertical-align: middle;
 }
-
-
 
 /**
  * Figures
@@ -57,8 +99,6 @@ figure > img {
 figcaption {
     font-size: $small-font-size;
 }
-
-
 
 /**
  * Lists
@@ -74,8 +114,6 @@ li {
     }
 }
 
-
-
 /**
  * Headings
  */
@@ -83,26 +121,33 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 300;
 }
 
-
-
 /**
  * Links
  */
 a {
-    color: $brand-color;
-    text-decoration: none;
+  color: $brand-color;
+  text-decoration: none;
 
-    &:visited {
-        color: darken($brand-color, 15%);
-    }
+  &:visited {
+    color: "#0b0080";
+  }
 
-    &:hover {
-        color: $text-color;
-        text-decoration: underline;
-    }
+  &:hover {
+    color: "#06e";
+  }
+
+  &:active {
+    color: "#faa700";
+  }
+
+  &:focus {
+    outline: thin dotted;
+  }
+
+  &:hover, &:active {
+    outline: 0;
+  }
 }
-
-
 
 /**
  * Blockquotes
@@ -119,8 +164,6 @@ blockquote {
         margin-bottom: 0;
     }
 }
-
-
 
 /**
  * Code formatting
@@ -148,8 +191,6 @@ pre {
     }
 }
 
-
-
 /**
  * Wrapper
  */
@@ -170,13 +211,10 @@ pre {
     }
 }
 
-
-
 /**
  * Clearfix
  */
 %clearfix {
-
     &:after {
         content: "";
         display: table;
@@ -184,13 +222,10 @@ pre {
     }
 }
 
-
-
 /**
  * Icons
  */
 .icon {
-
     > svg {
         display: inline-block;
         width: 16px;
@@ -201,4 +236,125 @@ pre {
             fill: $grey-color;
         }
     }
+}
+
+/* blog overview */
+div.entry-overview                  { margin: 25px 122px 25px 102px; }
+div.entry-overview h1,
+div.entry-overview div.summary,
+div.entry-overview div.summary p    { display: inline; line-height: 25px; }
+div.entry-overview h1               { margin: 0; font-size: 17px; font-weight: 700;
+                                      font-family: 'Roboto', sans-serif; }
+div.entry-overview h1:after         { content: " —"; }
+div.entry-overview div.summary,
+div.entry-overview div.date,
+div.entry-overview div.summary p    { margin: 0; padding: 0; }
+div.entry-overview div.detail       { margin-left: 140px; }
+div.entry-overview div.date         { float: left; width: 120px; color: #CC0033;
+                                      text-align: right; font-size: 14px; }
+
+span.backtick {
+  border:1px solid #EAEAEA;
+  border-radius:3px;
+  background:#F8F8F8;
+  padding:0px 3px 0px 3px;
+}
+
+::-moz-selection {
+  background:rgba(255,255,0,0.3)
+}
+
+::selection {
+  background:rgba(255,255,0,0.3);
+}
+
+a::-moz-selection {
+  background: rgba(255,255,0,0.3);
+  color: #0645ad
+}
+
+a::selection {
+  background: rgba(255,255,0,0.3);
+  color: #0645ad
+}
+
+p {
+  margin:1em 0;
+}
+
+/* code formatting.  no monospace because of webkit (bug?) */
+pre, code, tt {
+  font-family:
+    'Hack',
+    'Ubuntu Mono',
+    'Consolas',
+    'Deja Vu Sans Mono',
+    'Bitstream Vera Sans Mono',
+    'Monaco',
+    'Courier New';
+  font-size: 0.9em;
+}
+
+table {
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+  background: #fafafa;
+}
+
+td, th {
+  border: 1px solid #ddd;
+}
+
+/* other alignment things */
+img.align-center {
+  margin: 15px auto;
+  display: block;
+}
+
+/* pagination */
+div.pagination {
+  margin: 36px 0 0 0;
+  text-align: center;
+}
+
+div.pagination strong {
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* tags */
+p.tags {
+  text-align: right;
+}
+
+ul.tagcloud {
+  font-size: 16px;
+  margin: 36px 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul.tagcloud li {
+  margin: 0;
+  display: inline;
+}
+
+/* latex math */
+span.math img   { margin-bottom: -7px; }
+
+a[class^="icon-"]{
+  text-decoration: none;
+  vertical-align: middle;
+  font-size: 30px;
+}
+
+.avatar-circle {
+  width: 80px;
+  border-radius: 40px;
+  box-shadow: 1px 1px 10px;
+}
+
+.lineno {
+  border-right: 3px solid #D6D6D6 !important;
+  padding-right: 5px;
 }

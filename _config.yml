@@ -11,6 +11,9 @@ github_username:  lfdominguez
 # Build settings
 markdown: kramdown
 
+paginate: 5
+paginate_path: "/page:num/"
+
 gems:
 - jekyll-mentions
 - jemoji

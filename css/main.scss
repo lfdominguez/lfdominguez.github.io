@@ -3,11 +3,29 @@
 ---
 @charset "utf-8";
 
+@font-face {
+  font-family: 'Dosis-Medium';
+  src: url(/fonts/Dosis-Medium.woff) format('woff');
+}
 
+@font-face {
+  font-family: 'MesloLGS';
+  src: url(/fonts/MesloLGS.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url(/fonts/Lato-Regular.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Hack';
+  src: url(/fonts/Hack.woff) format('woff');
+}
 
 // Our variables
-$base-font-family: Helvetica, Arial, sans-serif;
-$base-font-size:   16px;
+$base-font-family: Lato, Arial, sans-serif;
+$base-font-size:   17px;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
 
@@ -15,11 +33,11 @@ $spacing-unit:     30px;
 
 $text-color:       #111;
 $background-color: #fdfdfd;
-$brand-color:      #2a7ae2;
+$brand-color:      #0645ad;
 
 $grey-color:       #828282;
-$grey-color-light: lighten($grey-color, 40%);
-$grey-color-dark:  darken($grey-color, 25%);
+$grey-color-light: #009BA1;
+$grey-color-dark:  #009BA1;
 
 $on-palm:          600px;
 $on-laptop:        800px;
