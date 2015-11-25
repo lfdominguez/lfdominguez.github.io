@@ -15,7 +15,15 @@ paginate: 5
 paginate_path: "/page:num/"
 
 gems:
-- jekyll-mentions
-- jemoji
-- jekyll-sitemap
-- jekyll-feed
+  - jekyll-mentions
+  - jemoji
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-smartify
+  - jekyll_figure
+
+figures:
+  dir: /images
+  enumerate: true
+
+smileytheme: MSN
