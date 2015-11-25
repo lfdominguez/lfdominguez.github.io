@@ -15,7 +15,7 @@ In the post *[ARP Spofing]({{ site.url }}{% post_url 2015-4-20-arp_spoofing %})*
 
 Into the IP layer of network, as is explained into this image
 
-{% figure posts/ip_and_arp_spoofing/ip_layer gif 'IP package description' %}
+![IP package description]({{ site.url }}/images/posts/ip_and_arp_spoofing/ip_layer.gif)
 
 Here, will can see the `Source Address` field, so when a network packet (by default ;)) leave our computer, the operating system set the ip address of the output interface into that field, that is because the remote computer need response to us.
 
