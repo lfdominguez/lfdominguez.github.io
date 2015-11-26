@@ -46,3 +46,17 @@ Explaining:
 - `-d 192.168.12.1` Apply this rule to the packets that's go to that ip `192.168.12.1`, if not, all the packets that will exit from our pc will change the source IP.
 - `-j SNAT` This is the acction to apply, in this case, change the source of the packet.
 - `--to-source 192.168.12.3` No comments :).
+
+Ok, with this line all the packets change their source IP, but... when the remote PC respond to that request, the packet is send to that spoofed IP `192.168.12.3`, so how catch the packet? Here is when is needed read the post *[ARP Spofing]({{ site.url }}{% post_url 2015-4-20-arp_spoofing %})* to known how *tell* to the PC objetive `192.168.12.1` that send the packets to `192.168.12.3` to our PC, in a short example (**arpspoof** we can found into the distribution repository, i use Debian -*testing*-):
+
+{% highlight bash linenos %}
+arpspoof -i eth0 -t 192.168.12.1 192.168.12.3
+{% endhighlight %}
+
+Explaining:
+
+- `-i eth0` This is the network interface (can be wlan0, mon0, eth1, etc).
+- `-t 192.168.12.1` This is the tarjet machine, the PC that will be apply the arp spoofing.
+- `192.168.12.13` This is the address that will be spoofed.
+
+Well and that's all, with this all the communication is around the attacker PC and the attacked PC, even when the real IP `192.168.12.3` exists or not.
