@@ -10,7 +10,7 @@ layout: default
   <div class=entry-overview>
     <div class=date>{{ post.date | date: "%b %-d, %Y" }}</div>
     <div class=detail>
-      <h1><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h1>
+      <h1><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a> <a href="{{ post.url | prepend: site.baseurl }}#disqus_thread">Comments</a></h1>
       {% if post.summary %}
       <div class=summary>{{ post.summary }}</div>
       {% endif %}
@@ -36,3 +36,5 @@ layout: default
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>
+
+<script id="dsq-count-scr" src="//h3r3t1cblog.disqus.com/count.js" async></script>
