@@ -57,7 +57,7 @@ De manera general las maneras de defendernos serían:
 cat /proc/sys/net/ipv4/conf/all/arp_accept
 {% endhighlight %}
 
-En caso de que el resultado no sea "0" es un riesgo de seguridad y deberían ponerlo inmediatamente a 1, de esta manera y desde una terminal con acceso de administración "root":
+En caso de que el resultado no sea "0" es un riesgo de seguridad y deberían establecerlo a "0", de esta manera y desde una terminal con acceso de administración "root":
 
 {% highlight bash linenos %}
 echo "0" > /proc/sys/net/ipv4/conf/all/arp_accept
