@@ -167,7 +167,7 @@ blockquote {
 
 /**
  * Code formatting
- */
+ *
 pre,
 code {
     font-size: 15px;
@@ -177,7 +177,7 @@ code {
 }
 
 code {
-    padding: 1px 5px;
+    padding: 1px 1px;
 }
 
 pre {
@@ -190,6 +190,8 @@ pre {
         padding-left: 0;
     }
 }
+*/
+
 
 /**
  * Wrapper
@@ -353,8 +355,46 @@ a[class^="icon-"]{
   border-radius: 40px;
   box-shadow: 1px 1px 10px;
 }
-
+/*
 .lineno {
   border-right: 3px solid #D6D6D6 !important;
   padding-right: 5px;
+}
+*/
+$terminal-window-height: 30px;
+$border-color: #d7d8da;
+$border-radius: .25em;
+$base-color: #393e46;
+
+.language-terminal::before {
+  content: "\2022 \2022 \2022";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: (0.5 * $terminal-window-height) 0;
+  background: mix($base-color, #fff, 25%);
+  color: mix($base-color, #fff, 50%);
+  font-size: 2em;
+  line-height: 0;
+  text-indent: (0.5 * $terminal-window-height);
+}
+
+.highlighter-rouge {
+  position: relative;
+  margin-bottom: 1.5em;
+  padding: 3em 1em 1em;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  box-shadow: 0 0.25em 1em rgba($base-color, 0.25);
+  background-color: $base-color;
+  line-height: .9em;
+
+  .highlight {
+    margin: 0;
+    padding: 0;
+    background-color: initial;
+    color: #fff;
+  }
 }

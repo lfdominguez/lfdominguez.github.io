@@ -116,7 +116,11 @@ ejemplo_src
 
 Fichero **main.cpp**:
 
-{% highlight c++ linenos %}
+```terminal
+apt install algo
+```
+
+```c++
 #include <iostream>
 
 using namespace std;
@@ -127,7 +131,7 @@ int main (int argc, char *argv[])
 
   return 0;
 }
-{% endhighlight %}
+```
 
 Fichero **CMakeLists.txt**:
 

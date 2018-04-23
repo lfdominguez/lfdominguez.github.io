@@ -2,7 +2,22 @@
 # permalink: /:categories/:year/:month/:day/:title
 markdown: kramdown
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
-highlighter: pygments
+highlighter: rouge
+encoding: UTF-8
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+      start_line: 1
+
+future: true
+jailed: false
+gfm_quirks: paragraph_end
 
 title: H3R3T1C Blog
 email: ldominguezvega@gmail.com
@@ -23,6 +38,8 @@ gems:
   - jekyll-feed
   - jekyll-smartify
   - jekyll_figure
+  - jekyll-paginate
+  - rouge
 
 figures:
   dir: /images
