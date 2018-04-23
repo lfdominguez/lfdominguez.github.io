@@ -30,7 +30,7 @@ Hoy vengo con una propuesta que está ganando mucho terreno a pesar de ser un pr
   * Usan criptografía *state-of-the-art* que no es más que la utilización de los algoritmos más modernos de éstos menesteres.
   * Al igual que IPSec es compilado como módulo del kernel a través de DKMS. Lo que logra un rendimiento mucho mayor que OpenVPN (pues este es *user-space*).
   * Usa los algoritmos de cifrado *Noise Protocol Framework, Curve25519, ChaCha20, Poly1305, BLAKE2, SipHash24, HKDF*.
-  * Se ha implementado teniendo en cuenta menor cantidad de código, lo que permite una mejor auditoría de código y un menor área de ataque. Está pensado para que una persona pueda auditar todo el código sin complicaciones.
+  * Se ha implementado teniendo en cuenta menor cantidad de código, lo que permite una mejor auditoría de código y una menor área de ataque. Está pensado para que una persona pueda auditar todo el código sin complicaciones.
   * Entre otras ....
 
 WireGuard por ahora no soporta la asignación dinámica de IP, por lo que cada cliente que tengamos se le debe establecer el ip en su configuración. Además que WireGuard no permite la comunicación de un cliente que no tenga el IP especificado en su fichero de configuración.
