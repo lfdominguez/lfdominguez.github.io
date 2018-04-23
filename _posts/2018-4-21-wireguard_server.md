@@ -15,7 +15,7 @@ En muchos casos como SysAdmins debemos o queremos mantener comunicación con alg
  * Queremos darle acceso a algún servicio de monitoreo al encargado de Seguridad que se encuentra fuera de la red de administración.
  * Entre otros...
 
-Una de las soluciones que se presenta para este tipo de problema son las VPN (Virtual Private Network), que permiten crear una red dentro de otra y generalmente encriptada, por lo que los datos que se transmiten se ocultan a los ojos de los interesados, no importa que sean a servicios no seguros, pues se comunican a través del túnel creado por este servicio.
+Una de las soluciones que se presenta para este tipo de problema son las VPN (Virtual Private Network), que permiten crear una red dentro de otra y generalmente cifrada, por lo que los datos que se transmiten se ocultan a los ojos de los interesados, no importa que sean a servicios no seguros, pues se comunican a través del túnel creado por este servicio.
 
 En la actualidad hay 2 herramientas que son ampliamente para este menester:
 
