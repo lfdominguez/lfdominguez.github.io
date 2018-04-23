@@ -29,7 +29,7 @@ Hoy vengo con una propuesta que está ganando mucho terreno a pesar de ser un pr
   * Extremadamente fácil en su instalación y despliegue, ellos indican que *"(...) aims to be easy to configure and deploy as SSH (...)"*.
   * Usan criptografía *state-of-the-art* que no es más que la utilización de los algoritmos más modernos de éstos menesteres.
   * Al igual que IPSec es compilado como módulo del kernel a través de DKMS. Lo que logra un rendimiento mucho mayor que OpenVPN (pues este es *user-space*).
-  * Usa los algoritmos de encriptación *Noise Protocol Framework, Curve25519, ChaCha20, Poly1305, BLAKE2, SipHash24, HKDF*.
+  * Usa los algoritmos de cifrado *Noise Protocol Framework, Curve25519, ChaCha20, Poly1305, BLAKE2, SipHash24, HKDF*.
   * Se ha implementado teniendo en cuenta menor cantidad de código, lo que permite una mejor auditoría de código y un menor área de ataque. Está pensado para que una persona pueda auditar todo el código sin complicaciones.
   * Entre otras ....
 
@@ -64,7 +64,7 @@ Lo primero que debemos hacer es generar una llave privada del servidor
 iBAnhqypjo6detnodQiHUEL/Wzg/OO5e4IXef6TOnGw=
 ```
 
-Esa sería la llave privada del servidor, una duda que me surgió en su momento fue acerca del por qué una llave privada tan pequeña con respecto a las que utilizaba en OpenVPN y en las investigaciones y correos de la lista, esto es debido a que los algoritmos de encriptación que utilizan que es ECC (Elliptic Curve Cryptography) utilizan menos bits para llegar a la misma complejidad criptográfica que RSA a un nivel superior de bits. Una tabla descriptiva sería:
+Esa sería la llave privada del servidor, una duda que me surgió en su momento fue acerca del por qué una llave privada tan pequeña con respecto a las que utilizaba en OpenVPN y en las investigaciones y correos de la lista, esto es debido a que los algoritmos de cifrado que utilizan que es ECC (Elliptic Curve Cryptography) utilizan menos bits para llegar a la misma complejidad criptográfica que RSA a un nivel superior de bits. Una tabla descriptiva sería:
 
 ![ECC comparación con RSA](/images/posts/wireguard_server/key-size-comparison.jpg)
 
