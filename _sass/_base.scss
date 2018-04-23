@@ -366,7 +366,15 @@ $border-color: #d7d8da;
 $border-radius: .25em;
 $base-color: #393e46;
 
-.language-terminal::before {
+code.highlighter-rouge {
+  border: 1px solid black;
+  padding: .2em;
+  border-radius: .2em;
+  color: white;
+  background-color: #393e46;
+}
+
+div.language-terminal::before {
   content: "\2022 \2022 \2022";
   position: absolute;
   top: 0;
@@ -381,7 +389,7 @@ $base-color: #393e46;
   text-indent: (0.5 * $terminal-window-height);
 }
 
-.highlighter-rouge {
+div.highlighter-rouge {
   position: relative;
   margin-bottom: 1.5em;
   padding: 3em 1em 1em;
@@ -390,6 +398,7 @@ $base-color: #393e46;
   box-shadow: 0 0.25em 1em rgba($base-color, 0.25);
   background-color: $base-color;
   line-height: .9em;
+  overflow-x: auto;
 
   .highlight {
     margin: 0;
