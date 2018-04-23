@@ -20,7 +20,7 @@ jailed: false
 gfm_quirks: paragraph_end
 
 title: H3R3T1C Blog
-email: ldominguezvega@gmail.com
+email: ldominguezvega (AT) gmail.com
 description: > # this means to ignore newlines until "baseurl:"
     Writing about the C/C++ programming, about Security, about Linux, about everythings.
 baseurl: "" # the subpath of your site, e.g. /blog/
