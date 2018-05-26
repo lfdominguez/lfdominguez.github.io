@@ -7,11 +7,11 @@ summary: WireGuard usado en un caso real
 
 ## Introducción
 
-En un [artículo anterior]({{ site.url }}/2018/04/21/wireguard_server.html) comentaba sobre las bondades de WireGuard, así como su instalación y configuración básica. Algunos pudieran ver ese artículo y preguntarse sobre cómo usarlo realmente, no solo basta con saber el cómo, también necesitamos ver el dónde.
+En un [artículo anterior]({{ site.url }}2018/04/21/wireguard_server.html) comentaba sobre las bondades de WireGuard, así como su instalación y configuración básica. Algunos pudieran ver ese artículo y preguntarse sobre cómo usarlo realmente, no solo basta con saber el cómo, también necesitamos ver el dónde.
 
 En este caso explicaré un ejemplo práctico para implementar WireGuard en su red. A grandes rasgos utilizaríamos a WireGuard para proteger todas las comunicaciones entre los clientes (usuarios de la red) y los servidores; además de una instancia adicional de WireGuard que le permitirá al encargado de Seguridad Informática acceder a los sistemas de monitoreo por el mismo canal de los usuarios normales, sin comprometer la seguridad de dichos servicios. Quedaría algo así:
 
-![Escenario]({{ site.url }}/images/posts/wireguard_server/example.png)
+![Escenario]({{ site.url }}images/posts/wireguard_server/example.png)
 
 Como podemos apreciar en la imagen anterior, tendríamos un firewall entre los usuarios de la red y los servidores. Dicho firewall brindaría los servicios de WireGuard a los usuarios, los cuales están conectados por el canal físico hacia éste. Al WireGuard crear interfaces virtuales TUN, el firewall solo permitiría la comunicación hacia los servicios a través de estas interfaces virtuales nuevas (las creadas por WireGuard), denegando toda comunicación restante. De esta manera todo dispositivo que no se encuentre como cliente del WireGuard no podrá consumir de los servicios, ni podrá ver la comunicación, debido a la encriptación brindada por WireGuard.
 
@@ -19,7 +19,7 @@ Si se fijan, se evidencia el ejemplo de la utilización de otro canal de WireGua
 
 ## Manos a la obra
 
-Primero debemos en nuestro firewall levantar los dos servidores de WireGuard (asumo que hayan leído el [artículo anterior]({{ site.url }}/2018/04/21/wireguard_server.html)), uno para los usuarios normales y otro para el encargado de la Seguridad Informática.
+Primero debemos en nuestro firewall levantar los dos servidores de WireGuard (asumo que hayan leído el [artículo anterior]({{ site.url }}2018/04/21/wireguard_server.html)), uno para los usuarios normales y otro para el encargado de la Seguridad Informática.
 
 ```terminal
 # Generando las llaves privadas de los servidores
