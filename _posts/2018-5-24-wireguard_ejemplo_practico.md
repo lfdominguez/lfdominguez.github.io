@@ -124,6 +124,12 @@ La diferencia entre ellas es el nivel de seguridad (y paranoia) que queremos, pu
 > ### En Windows
 >
 > Utilizando el cliente TunSafe
+>
+> ![Opciones]({{ site.url }}/images/posts/wireguard_server/tunsafe_options_button_select.png)
+>
+> ![Menú de Opciones]({{ site.url }}/images/posts/wireguard_server/tunsafe_option_generate_key_pair_select.png)
+>
+> ![Generación de llaves]({{ site.url }}/images/posts/wireguard_server/tunsafe_option_generate_key_pair.png)
 
 
 Una vez que se tenga el par de llaves, se toma la pública y agregamos el siguiente fragmento a la configuración correspondiente, por ejemplo en `/etc/wireguard/empresa.conf`:
@@ -201,6 +207,15 @@ $ systemctl start wg-quick@empresa
 
 ### Windows
 
-En este caso utilizaremos el cliente `TurnSafe`
+En este caso utilizaremos el cliente [TurnSafe](https://tunsafe.com/download)
+
+![Opción de configurar]({{ site.url }}/images/posts/wireguard_server/tunsafe_edit_config_button_select.png)
+
+Se abre el editor por defecto para configurar el cliente (o servidor) de WireGuard
+
+![Editor de la configuración]({{ site.url }}/images/posts/wireguard_server/tunsafe_notepad_config_edit.png)
+
+Como pueden observar la configuración es idéntica a la de Debian.
+
 
 Solo queda por último las reglas de firewall para el correcto enrutado de los paquetes que vienen solo por las interfaces virtuales, pero este proceso queda fuera del ejemplo debido a la gran variedad de vías por la cual hacerlo.
