@@ -108,7 +108,7 @@ Cada cliente que se requiera conectar al servidor tiene que tener su entrada cor
  * Generar el par de llaves en cada cliente y copiar la pública en el servidor.
  * Generar el par de llaves de cada cliente en el propio servidor.
 
-La diferencia entre ellas es el nivel de seguridad (y paranoia) que queremos, puesto que lo más seguro es generarlo en cada cliente por separado para aumentar el principio de insertidumbre en la generación de comportamientos aleatorios de la generación de las llaves. Pero es mucho más cómodo realizarlo en el propio servidor, por lo que es a gusto del lector como lo desea hacer.
+La diferencia entre ellas es el nivel de seguridad (y paranoia) que queremos, puesto que lo más seguro es generarlo en cada cliente por separado para aumentar el principio de incertidumbre en la generación de comportamientos aleatorios de la generación de las llaves. Pero es mucho más cómodo realizarlo en el propio servidor, por lo que es a gusto del lector como lo desea hacer.
 
 >### En Debian
 >
