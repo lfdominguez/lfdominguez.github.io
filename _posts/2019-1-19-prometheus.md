@@ -193,6 +193,8 @@ Debian en su repositorio cuenta con el Node-Exporter, el paquete se llama `prome
 $ apt install prometheus-node-exporter
 ```
 
+  En caso de que se quiera usar en la versión estable de Debian, hay que activar el repositorio de *backports* como mismo se realizó en la instalación de Prometheus.
+
 ### Ejecutando desde Docker
 
 Podemos usar la imagen de Quay.io:
@@ -232,5 +234,7 @@ En mi caso lo tengo instalado en cada servidor Proxmox.
 Ahora toca visualizar todo. Uso Grafana por sus potencialidades y se ha convertido en la plataforma de visualización de facto en mi entorno, [acá](https://raw.githubusercontent.com/rfrail3/grafana-dashboards/master/prometheus/node-exporter-full.json) les dejo un *dashboard* específico para Node-Exporter, con una foto para que vean como queda:
 
 ![Grafana]({{ site.url }}images/posts/prometheus/grafana_1.webp)
+
 ![Grafana]({{ site.url }}images/posts/prometheus/grafana_2.webp)
+
 ![Grafana]({{ site.url }}images/posts/prometheus/grafana_3.webp)
