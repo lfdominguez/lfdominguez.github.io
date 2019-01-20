@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Servidor de métricas Prometheus
-tags: [métricas, monitoreo, linux, servidores, docker]
-summary: Como instalar y configurar Prometheus, un servidor de métricas para nuestra infraestructura
+title: Servidor de métricas Prometheus y aplicación práctica con Node-Exporter y Grafana
+tags: [métricas, monitoreo, linux, servidores, docker, grafana, node-exporter]
+summary: Como instalar y configurar Prometheus, un servidor de métricas para nuestra infraestructura, así como node-exporter y visualizar con Grafana.
 ---
 
 ## Introducción
@@ -10,6 +10,8 @@ summary: Como instalar y configurar Prometheus, un servidor de métricas para nu
 Prometheus es un sistema de monitoreo que a diferencia de sus homólogos utiliza un enfoque diferente, en lugar de que los servicios que lo soporten o los programas que obtienen las métricas se las envíen a Prometheus, éste es quien se conecta a ellos cada cierto tiempo y recopila toda la información.
 Las ventajas y desventajas de esta manera de trabajar pueden profundizarla más en [el sitio oficial](https://prometheus.io/docs/introduction/faq/#why-do-you-pull-rather-than-push) o en [su blog](https://prometheus.io/blog/2016/07/23/pull-does-not-scale-or-does-it/).
 Está programado en Go, por lo que su instalación es sumamente sencilla y no tiene dependencia alguna, es un simple ejecutable.
+
+Vamos a ver un ejemplo de aplicación con Node-Exporter y Grafana para levantar una mínima infraestructura de monitoreo en nuestra red.
 
 ## Instalación genérica
 
@@ -53,7 +55,7 @@ Como siempre ejecutarlo desde Docker es más fácil, la imagen oficial de Promet
 
 ### Quay.io
 ```terminal
-$ docker run --name prometheus -d -p 9090:9090 prometheus/prometheus
+$ docker run --name prometheus -d -p 9090:9090 quay.io/prometheus/prometheus
 ```
 
 ### Docker Hub
@@ -162,3 +164,73 @@ Para terminar hablo sobre *PromQL* que es el lenguaje de consultas a Prometheus.
   instance_memory_limit_bytes - instance_memory_usage_bytes
  ) by (app, proc) / 1024 / 1024
  ```
+
+## Node-Exporter
+
+Es un *exporter* de Prometheus (así son llamados los programas encargados de obtener las métricas y brindarlas en un formato que Prometheus pueda obtener, algunos programas ya la traen incluidas, en otros casos se debe usar uno externo). Con Node-Exporter, Prometheus puede consumir, entre muchas otras, las siguientes métricas:
+
+ * `arp` Expone las estadísticas ARP de `/proc/net/arp`.
+ * `cpu`
+ * `diskstats` Expone las métricas de I/O de los discos.
+ * `entropy` Expone la entropía disponible (muy importante para la criptografía).
+ * `filesystem` Expone las estadísticas de los sistemas de ficheros, como el espacio en disco usado, etc.
+ * `hwmon` Expone los sensores de hardware de `/sys/class/hwmon/`
+ * `loadavg` Expone el promedio de carga del nodo.
+ * `meminfo` Expone las estadísticas de la RAM.
+ * `netclass` Expone la información de las interfaces de red de `/sys/class/net/`
+ * `netdev` Más estadísticas de red, como los *bytes* transferidos, etc.
+ * Entre muchas otras ...
+
+### Instalación genérica
+
+Podemos seguir el mismo procedimiento de Prometheus, pero buscando la versión estable [aquí](https://github.com/prometheus/node_exporter/releases/latest).
+
+### Instalación en Debian
+
+Debian en su repositorio cuenta con el Node-Exporter, el paquete se llama `prometheus-node-exporter`, por lo que con `apt`:
+
+```terminal
+$ apt install prometheus-node-exporter
+```
+
+### Ejecutando desde Docker
+
+Podemos usar la imagen de Quay.io:
+
+```terminal
+docker run -d \
+  --net="host" \
+  --pid="host" \
+  -v "/:/host:ro,rslave" \
+  quay.io/prometheus/node-exporter \
+  --path.rootfs /host
+```
+
+Lo más relevante es que del host se expone la raíz, para que Node-Exporter pueda obtener las métricas y usa la propia interfaz de red del nodo, para evitar medir solo la interfaz virtual.
+
+Para más información ir a [su sitio](https://github.com/prometheus/node_exporter)
+
+### Configurando Prometheus
+
+Node-Exporter por defecto usa el puerto `9100` y `/metrics` para exportar las métricas, por lo que vamos a la configuración de prometheus `/etc/prometheus/prometheus.yml` y agregamos el (o los) nodo(s) que exponen sus métricas por debajo de `scrape_configs`:
+
+```yml
+- job_name: 'node_exporter'
+static_configs:
+  - targets:
+    - ip_node_1:9100
+    - ip_node_2:9100
+    - ip_node_3:9100
+    - ip_node_4:9100
+metrics_path: /metrics
+```
+
+En mi caso lo tengo instalado en cada servidor Proxmox.
+
+## Grafana
+
+Ahora toca visualizar todo. Uso Grafana por sus potencialidades y se ha convertido en la plataforma de visualización de facto en mi entorno, [acá](https://raw.githubusercontent.com/rfrail3/grafana-dashboards/master/prometheus/node-exporter-full.json) les dejo un *dashboard* específico para Node-Exporter, con una foto para que vean como queda:
+
+![Grafana]({{ site.url }}images/posts/prometheus/grafana_1.webp)
+![Grafana]({{ site.url }}images/posts/prometheus/grafana_2.webp)
+![Grafana]({{ site.url }}images/posts/prometheus/grafana_3.webp)
