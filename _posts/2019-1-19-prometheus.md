@@ -13,7 +13,14 @@ Está programado en Go, por lo que su instalación es sumamente sencilla y no ti
 
 ## Instalación genérica
 
+Como comentaba anteriormente, debido a su lenguaje de programación, es simplemente ir a la página de [GitHub](https://github.com/prometheus/prometheus/releases/latest) y descargar la versión estable para el sistema operativo que querramos (incluido windows ;) ). Una vez descomprimido, es simplemente ejecutarlo como un programa más, queda fuera del ámbito del manual la creación de un servicio que lo use.
 
+Alguno de sus argumentos básicos son:
+
+ * `--config.file` Ubicación del fichero de configuración en `YML`. Por defecto es `/etc/prometheus/prometheus.yml`.
+ * `--web.listen-address` Dirección por donde escuchará la UI, el API y la telemetría. Por defecto es `0.0.0.0:9090`.
+ * `--storage.tsdb.retention` Tiempo de retención de los datos de las métricas (Prometheus no está pensado para guardar un histórico largo de datos, para ello hay soluciones que se integran a Prometheus). Por defecto es `15d`.
+ * `--log.level` Nivel de bitácora. Por defecto es `info`.
 
 ## Instalando en Debian
 
@@ -63,6 +70,14 @@ $ docker run --name prometheus -d -p 9090:9090 prom/prometheus
 ## Verificando instalación
 
 Ahora podremos acceder por HTTP hacia el servidor Prometheus usando un navegador. En esa interfaz podremos hacer consultas para probar las gráficas y los datos, así como ver el estado de los servicios a los cuales Prometheus se conecta para obtener la información de las métricas.
+
+### Página de consultas
+
+![Escenario]({{ site.url }}images/posts/prometheus/web_graph.webp)
+
+### Página de chequeo de los clientes
+
+![Escenario]({{ site.url }}images/posts/prometheus/web_target_status.webp)
 
 ## Breves sobre la Configuración
 
